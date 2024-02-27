@@ -11,7 +11,7 @@ export default class AccountDAODatabase implements AccountDAO, SignupAccountDAO,
 		await connection.$pool.end();
 	}
 
-	async getById (accountId: string, flag: boolean) {
+	async getById (accountId: string) {
 		const connection = pgp()("postgres://postgres:123456@localhost:5432/app");
 		const [account] = await connection.query("select * from cccat14.account where account_id = $1", [accountId]);
 		await connection.$pool.end();
