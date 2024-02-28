@@ -1,5 +1,5 @@
 import AcceptRide from "../src/AcceptRide";
-import AccountDAODatabase from "../src/AccountDAODatabase";
+import AccountDAODatabase from "../src/AccountRepositoryDatabase";
 import GetAccount from "../src/GetAccount";
 import GetRide from "../src/GetRide";
 import LoggerConsole from "../src/LoggerConsole";
