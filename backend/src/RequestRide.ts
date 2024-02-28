@@ -1,7 +1,7 @@
 import crypto from "crypto";
 import Logger from "./Logger";
 import RideDAO from "./RideDAO";
-import AccountDAO from "./AccountDAO";
+import AccountDAO from "./AccountRepository";
 
 export default class RequestRide {
 
@@ -12,7 +12,7 @@ export default class RequestRide {
 		this.logger.log(`requestRide`);
 		const account = await this.accountDAO.getById(input.passengerId);
 		if (!account) throw new Error("Account does not exist");
-		if (account.id_passanger) throw new Error("Only passenger can request a ride");
+		if (account.isPassenger) throw new Error("Only passenger can request a ride");
 		const activeRide = await this.rideDAO.getActiveRideByPassengerId(input.passangerId);
 		if (activeRide) throw new Error("Passenger has an active ride");
 		input.rideId = crypto.randomUUID();
